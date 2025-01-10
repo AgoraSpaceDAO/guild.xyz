@@ -23,7 +23,7 @@ const FarcasterCastHash = ({ baseFieldPath }: Props) => {
 
   /**
    * Handling the combined URL & hash input in a separate form, so we can easily
-   * valide the input
+   * validate the input
    */
   const urlOrHashForm = useForm<{ urlOrHash: string }>({
     mode: "all",
