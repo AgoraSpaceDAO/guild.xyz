@@ -32,7 +32,7 @@ export const useEditRolePlatformContext = () => useContext(EditRolePlatformConte
 /**
  * Role platforms with dynamic amount will return input as an array of objects, but we handle it as a single object on the frontend, so we map it to the correct format with this function.
  *
- * Context: LINEAR operation will always have only 1 input, so we decided we could handle it as an object insted of an array with 1 object in it.
+ * Context: LINEAR operation will always have only 1 input, so we decided we could handle it as an object instead of an array with 1 object in it.
  *
  * IMPORTANT: Once we start using other operation types for dynamic amount, we should only support arrays to avoid unnecessary complexity.
  */
