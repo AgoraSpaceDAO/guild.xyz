@@ -38,7 +38,7 @@ const PoolStep = ({ onSubmit }: { onSubmit: () => void }) => {
   const { chainId, address: userAddress } = useAccount()
   const {
     field: { value: amount },
-  } = useController({ name: "amount" })
+  } = useController({ name: "amount", defaultValue: "1" })
 
   const [skip, setSkip] = useState(false)
 
@@ -48,11 +48,13 @@ const PoolStep = ({ onSubmit }: { onSubmit: () => void }) => {
     data: { logoURI: tokenLogo, decimals },
   } = useTokenData(chain, tokenAddress)
 
-  const { isBalanceSufficient } = useIsBalanceSufficient({
+  const { isBalanceSufficient: rawIsBalanceSufficient } = useIsBalanceSufficient({
     address: tokenAddress,
     chain: chain,
     amount: amount,
   })
+
+  const isBalanceSufficient = rawIsBalanceSufficient || amount === "0"
 
   const formattedAmount =
     !!amount && decimals ? parseUnits(amount.toString(), decimals) : BigInt(1)
@@ -114,6 +116,8 @@ const PoolStep = ({ onSubmit }: { onSubmit: () => void }) => {
     setSkip(!skip)
   }
 
+  const willDepositTokens = !!amount ? parseFloat(amount) > 0 : false
+
   return (
     <Stack gap={5}>
       <Text colorScheme="gray">
@@ -157,11 +161,11 @@ const PoolStep = ({ onSubmit }: { onSubmit: () => void }) => {
       </Stack>
 
       <Stack>
-        <Collapse in={!isOnCorrectChain}>
+        <Collapse in={!isOnCorrectChain && willDepositTokens}>
           <SwitchNetworkButton targetChainId={Number(Chains[chain])} />
         </Collapse>
 
-        <Collapse in={isOnCorrectChain && !skip}>
+        <Collapse in={isOnCorrectChain && willDepositTokens}>
           <AllowanceButton
             chain={chain}
             token={tokenAddress}
@@ -170,7 +174,10 @@ const PoolStep = ({ onSubmit }: { onSubmit: () => void }) => {
         </Collapse>
 
         <Collapse
-          in={(!!allowance || skip || pickedCurrencyIsNative) && isOnCorrectChain}
+          in={
+            (!!allowance || pickedCurrencyIsNative) &&
+            (isOnCorrectChain || !willDepositTokens)
+          }
         >
           <Button
             size="lg"
