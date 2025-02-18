@@ -1,87 +1,118 @@
-# Guild.xyz interface
+# **Guild.xyz Interface**  
 
-[![Code check](https://github.com/guildxyz/guild.xyz/actions/workflows/code-check.yml/badge.svg)](https://github.com/guildxyz/guild.xyz/actions/workflows/code-check.yml)
+<div align="left">
 
-Open source interface for Guild.xyz -- a tool for platformless membership management.
+[![Code Check](https://github.com/guildxyz/guild.xyz/actions/workflows/code-check.yml/badge.svg)](https://github.com/guildxyz/guild.xyz/actions/workflows/code-check.yml)
+[![Website](https://img.shields.io/badge/Website-Guild.xyz-0077b5?style=flat-square&logo=google-chrome&logoColor=white)](https://guild.xyz)
+[![Docs](https://img.shields.io/badge/Docs-docs.guild.xyz-4CAF50?style=flat-square&logo=bookstack&logoColor=white)](https://docs.guild.xyz/)
+[![X (Twitter)](https://img.shields.io/badge/X-@Guildxyz-000000?style=flat-square&logo=x&logoColor=white)](https://x.com/guildxyz)
+[![Discord](https://img.shields.io/badge/Discord-Join_Guild.xyz-5865F2?style=flat-square&logo=discord&logoColor=white)](https://discord.gg/KUkghUdk2G)
 
-- Website: [guild.xyz](https://guild.xyz)
-- Docs: [docs.guild.xyz](https://docs.guild.xyz/)
-- X (formerly Twitter): [@Guildxyz](https://x.com/guildxyz)
-- Discord: [Guild.xyz](https://discord.gg/KUkghUdk2G)
 
-## Key dependencies overview
+</div>
 
-- Framework
-  - React with Next.js
-- Styling:
-  - Chakra UI (migration to Tailwind CSS and Radix UI in progress)
-  - Phosphor icons
-  - Framer motion
-- State management:
-  - SWR for fetching and caching
-  - React Hook Form for form state
-  - jotai for custom, simple global state
-- Testing:
-  - Storybook - [live deployment](https://guildxyz.github.io/guild.xyz)
-  - Playwright
-- Web3 related:
-  - viem
-  - wagmi for connection management
-- Data visualization, graphics:
-  - visx
-  - threejs
-- Deployment:
-  - Vercel
-- Product analytics:
-  - PostHog
-- Error monitoring:
-  - BugSnag
+---
 
-## Development
+## 🚀 **Overview**  
 
-### Running the interface locally
+**Guild.xyz** is an open-source interface for **platformless membership management**.
 
-1. `npm i`
-2. `npm run dev`
-3. If you don't have the secret environment variables, copy the `.env.example` as `.env.local`.
+### 🔑 **Key Dependencies Overview**
+- **Framework**: React with Next.js  
+- **Styling**: Chakra UI *(migrating to Tailwind CSS & Radix UI)*, Phosphor Icons, Framer Motion  
+- **State Management**: SWR *(fetching & caching)*, React Hook Form *(form state)*, Jotai *(global state)*  
+- **Testing**: Storybook – [Live Deployment](https://guildxyz.github.io/guild.xyz), Playwright  
+- **Web3 Integration**: Viem, Wagmi *(connection management)*  
+- **Graphics & Data Visualization**: Visx, Three.js  
+- **Deployment**: Vercel  
+- **Product Analytics**: PostHog  
+- **Error Monitoring**: BugSnag  
 
-Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
+---
 
-> [!WARNING]
-> We've recently turned on `strict` and `strictNullChecks` tsconfig options, and decided to gradually fix the related TypeScript issues. The pre-commit hook will ignore these, but it is expected that you'll see different issues during local development. Feel free to open a PR if you fix some of them. :wink:
+## 🛠 **Development Setup**
 
-#### For Windows users
+### **Running Locally**  
 
-If you encounter the error `ERR_OSSL_EVP_UNSUPPORTED` you can do :
+1️⃣ Install dependencies:  
+```bash
+npm i
+```
+2️⃣ Start the development server:  
+```bash
+npm run dev
+```
+3️⃣ If you don't have secret environment variables, copy `.env.example` to `.env.local`  
+4️⃣ Open [http://localhost:3000](http://localhost:3000) in your browser  
 
+📌 **For Windows Users**  
+If you encounter the error `ERR_OSSL_EVP_UNSUPPORTED`, run:
 ```bash
 export NODE_OPTIONS=--openssl-legacy-provider
 npm i --force
 npm run dev
 ```
 
-### Getting secret environment variables (for core team members):
+> ⚠️ **Warning:**  
+> We've recently enabled `strict` and `strictNullChecks` in tsconfig.  
+> TypeScript issues might appear during development. Fixes are welcome via PRs! 😉
 
-1. Get added to the team on Vercel
-1. `npm i vercel@latest -g`
-1. `vercel link`
-1. `vercel env pull .env.local`
+---
 
-### Code guidelines
+## 🔐 **Getting Secret Environment Variables (Core Team Members Only)**
 
-- Always use design system values for styling when possible
-- Follow the file naming and folder structure pattern of the repository
+1️⃣ Get added to the team on **Vercel**  
+2️⃣ Install the latest **Vercel CLI**:  
+```bash
+npm i vercel@latest -g
+```
+3️⃣ Link the project:  
+```bash
+vercel link
+```
+4️⃣ Pull environment variables:  
+```bash
+vercel env pull .env.local
+```
 
-### Committing
+---
 
-- Use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) when applicable (recommended but not required)
-- Always use present tense in commit messages
-- Always review your changes before committing
-- A pre-commit hook type checks the code base. If it fails but you want to commit a WIP anyway use `--no-verify`
+## 📝 **Code Guidelines**  
 
-### PR flow
+- Always **use design system values** for styling where possible  
+- Follow the existing **file naming & folder structure** conventions  
 
-- Always create a draft PR right away when starting to work on a new branch
-- Vercel creates a unique link for each commit and each branch (showing the latest version of the branch), which you can get from the deployment page. Share the branch link with the team if needed
-- Always self-review changes in your PR before asking others. Refactor, clean up and add comments if needed. Repeat until there's no room for improvement that you see, or you've left a comment where there is
-- If you consider it ready, mark it as ready for review and ask for a review, or merge it by yourself if you have the permission
+### **Committing**  
+- Follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) *(recommended but not required)*  
+- Use **present tense** in commit messages  
+- Review your changes before committing  
+- Use `--no-verify` to bypass the pre-commit hook in case of WIP commits  
+
+---
+
+## 🔄 **PR Flow**  
+
+✔️ **Start with a draft PR** – create it as soon as you start a new branch  
+✔️ **Vercel provides unique preview links** – share them with the team when needed  
+✔️ **Self-review before requesting feedback** – clean up code, refactor, and add comments  
+✔️ **Mark as "Ready for Review"** once finalized, or merge if you have permission  
+
+---
+
+## 📬 **Stay Connected**  
+
+<p align="left">
+  <a href="https://guild.xyz">
+    <img src="https://img.shields.io/badge/Website-0077b5?logo=google-chrome&logoColor=white&style=for-the-badge" alt="Website">
+  </a>
+  <a href="https://docs.guild.xyz/">
+    <img src="https://img.shields.io/badge/Docs-4CAF50?logo=bookstack&logoColor=white&style=for-the-badge" alt="Docs">
+  </a>
+  <a href="https://x.com/guildxyz">
+    <img src="https://img.shields.io/badge/X-000000?logo=x&logoColor=white&style=for-the-badge" alt="X (formerly Twitter)">
+  </a>
+  <a href="https://discord.gg/KUkghUdk2G">
+    <img src="https://img.shields.io/badge/Discord-5865F2?logo=discord&logoColor=white&style=for-the-badge" alt="Discord">
+  </a>
+</p>
+
