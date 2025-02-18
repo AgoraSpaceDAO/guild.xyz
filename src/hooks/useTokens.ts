@@ -97,6 +97,7 @@ const TokenApiURLs: Record<Chain, string[]> = {
   IOTA: [
     "https://raw.githubusercontent.com/MagicSea-Finance/tokenlist/main/token.default.json",
   ],
+  IOTEX: ["https://mimo.exchange/api/token-list/iotex"],
   SONIC: ["https://tokens.coingecko.com/sonic/all.json"],
   SOPHON: [],
   ZERO: [],
